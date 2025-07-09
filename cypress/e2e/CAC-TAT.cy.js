@@ -281,7 +281,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       .should('have.value', 'teste teste')
   });
 
-  it.only('faz uma requisicao HTTP', () => {
+  it('faz uma requisicao HTTP', () => {
     cy.request({
       method: 'GET',
       url: 'https://cac-tat-v3.s3.eu-central-1.amazonaws.com/index.html',
@@ -294,7 +294,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     
   });
 
-  it.only('metodo do professor', () => {
+  it('metodo do professor', () => {
     cy.request('https://cac-tat-v3.s3.eu-central-1.amazonaws.com/index.html')
       .as('getRequest')
       .its('status')
