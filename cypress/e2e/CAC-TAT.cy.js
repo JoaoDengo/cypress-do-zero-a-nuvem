@@ -30,9 +30,20 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       .should('be.visible')
   } )
 
-  it('exibe mensagem de erro ao submeter o formulario com um email com formatação invalida', () =>{
+  it.only('exibe mensagem de erro ao submeter o formulario com um email com formatação invalida', () =>{
+    const longText = Cypress._.repeat('abcdefghijklmnopqrstuvwxyz', 10)
+
+    cy.get('[id^=firstName]')
+      .type('Joao')
+    
+    cy.get('[id^=lastName]')
+      .type('Dengo')
+
     cy.get('input[type="email"]')
       .type('joaodengo@')
+
+    cy.get('[id^=open-text-area]')
+      .type(longText, {delay: 0})
 
     cy.get('button[type="submit"]')
       .click()
